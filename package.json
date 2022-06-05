@@ -1,0 +1,64 @@
+{
+  "name": "@aws-actions/codebuild-run-build",
+  "version": "1.0.3",
+  "description": "Execute CodeBuild::startBuild for the current repo.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "prettier -c *.js *.json *.md test/*.js; eslint **.js test/**.js",
+    "format": "prettier --write -c *.js *.json *.md test/*.js; eslint --fix **.js test/**.js",
+    "package": "ncc build index.js -o dist",
+    "test": "mocha"
+  },
+  "author": "aws-crypto-tools-team@amazon.com",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/exec": "^1.0.3",
+    "@actions/github": "^2.1.1",
+    "aws-sdk": "^2.654.0",
+    "uuid": "^3.4.0",
+    "yargs": "^15.3.1"
+  },
+  "bin": {
+    "codebuild-run-build": "local.js"
+  },
+  "files": [
+    "*.js"
+  ],
+  "devDependencies": {
+    "@zeit/ncc": "^0.21.1",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.2",
+    "mocha": "^7.1.1",
+    "prettier": "^2.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --ignore-path dist/**",
+      "eslint --fix --ignore-pattern dist/**"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hatch-Arcade/aws-codebuild-run-build.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Hatch-Arcade/aws-codebuild-run-build/issues"
+  },
+  "homepage": "https://github.com/Hatch-Arcade/aws-codebuild-run-build#readme"
+}
